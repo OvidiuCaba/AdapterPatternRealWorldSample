@@ -21,10 +21,7 @@ namespace AdapterPatternRealWorldSample
 
         private static void SelectAll(Control control)
         {
-            // Initially here there were about 10 lines of code that determined the active control.
-            // In the production code, the control object passed as parameter is a container of controls.
-            // But since determining the active control is out of scope, in order to keep things simple, we'll ignore those lines.
-            Control activeControl = control;
+            Control activeControl = GetActivecontrol(control);
 
             if (activeControl is CertainFrameworkControl)
             {
@@ -42,8 +39,7 @@ namespace AdapterPatternRealWorldSample
 
         private static void Copy(Control control)
         {
-            // Initially here there were about 10 lines of code that determined the active control
-            Control activeControl = control;
+            Control activeControl = GetActivecontrol(control);
 
             if (activeControl is CertainFrameworkControl)
             {
@@ -61,8 +57,7 @@ namespace AdapterPatternRealWorldSample
 
         private static void Paste(Control control)
         {
-            // Initially here there were about 10 lines of code that determined the active control
-            Control activeControl = control;
+            Control activeControl = GetActivecontrol(control);
 
             if (activeControl is CertainFrameworkControl)
             {
@@ -80,8 +75,7 @@ namespace AdapterPatternRealWorldSample
 
         private static void Cut(Control control)
         {
-            // Initially here there were about 10 lines of code that determined the active control
-            Control activeControl = control;
+            Control activeControl = GetActivecontrol(control);
 
             if (activeControl is CertainFrameworkControl)
             {
@@ -95,6 +89,14 @@ namespace AdapterPatternRealWorldSample
             {
                 ((CertainThirdPartyControl)activeControl).Cut();
             }
+        }
+
+        private static Control GetActivecontrol(Control control)
+        {
+            // Initially here there were about 10 lines of code that determined the active control.
+            // In the production code, the control object passed as parameter is a container of controls.
+            // But since determining the active control is out of scope, in order to keep things simple, we'll ignore those lines.
+            return control;
         }
     }
 }
