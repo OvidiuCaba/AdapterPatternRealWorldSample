@@ -21,82 +21,34 @@ namespace AdapterPatternRealWorldSample
 
         private static void SelectAll(Control control)
         {
-            Control activeControl = GetActivecontrol(control);
-
-            if (activeControl is CertainFrameworkControl)
-            {
-                ((CertainFrameworkControl)activeControl).SelectAll();
-            }
-            else if (activeControl is IEditableControl)
-            {
-                ((IEditableControl)activeControl).SelectAll();
-            }
-            else if (activeControl is CertainThirdPartyControl)
-            {
-                ((CertainThirdPartyControl)activeControl).Select();
-            }
+            IEditableControl activeControl = GetActivecontrol(control);
+            activeControl?.SelectAll();
         }
 
         private static void Copy(Control control)
         {
-            Control activeControl = GetActivecontrol(control);
-
-            if (activeControl is CertainFrameworkControl)
-            {
-                ((CertainFrameworkControl)activeControl).Copy();
-            }
-            else if (activeControl is IEditableControl)
-            {
-                ((IEditableControl)activeControl).Copy();
-            }
-            else if (activeControl is CertainThirdPartyControl)
-            {
-                ((CertainThirdPartyControl)activeControl).Copy();
-            }
+            IEditableControl activeControl = GetActivecontrol(control);
+            activeControl?.Copy();
         }
 
         private static void Paste(Control control)
         {
-            Control activeControl = GetActivecontrol(control);
-
-            if (activeControl is CertainFrameworkControl)
-            {
-                ((CertainFrameworkControl)activeControl).Paste();
-            }
-            else if (activeControl is IEditableControl)
-            {
-                ((IEditableControl)activeControl).Paste();
-            }
-            else if (activeControl is CertainThirdPartyControl)
-            {
-                ((CertainThirdPartyControl)activeControl).Paste();
-            }
+            IEditableControl activeControl = GetActivecontrol(control);
+            activeControl?.Paste();
         }
 
         private static void Cut(Control control)
         {
-            Control activeControl = GetActivecontrol(control);
-
-            if (activeControl is CertainFrameworkControl)
-            {
-                ((CertainFrameworkControl)activeControl).Cut();
-            }
-            else if (activeControl is IEditableControl)
-            {
-                ((IEditableControl)activeControl).Cut();
-            }
-            else if (activeControl is CertainThirdPartyControl)
-            {
-                ((CertainThirdPartyControl)activeControl).Cut();
-            }
+            IEditableControl activeControl = GetActivecontrol(control);
+            activeControl?.Cut();
         }
 
-        private static Control GetActivecontrol(Control control)
+        private static IEditableControl GetActivecontrol(Control control)
         {
             // Initially here there were about 10 lines of code that determined the active control.
             // In the production code, the control object passed as parameter is a container of controls.
             // But since determining the active control is out of scope, in order to keep things simple, we'll ignore those lines.
-            return control;
+            return Utils.GetControl(control);
         }
     }
 }
