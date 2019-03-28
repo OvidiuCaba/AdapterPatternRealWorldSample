@@ -21,29 +21,29 @@ namespace AdapterPatternRealWorldSample
 
         private static void SelectAll(Control control)
         {
-            IEditableControl activeControl = GetActivecontrol(control);
+            IEditableControl activeControl = GetActiveControl(control);
             activeControl?.SelectAll();
         }
 
         private static void Copy(Control control)
         {
-            IEditableControl activeControl = GetActivecontrol(control);
+            IEditableControl activeControl = GetActiveControl(control);
             activeControl?.Copy();
         }
 
         private static void Paste(Control control)
         {
-            IEditableControl activeControl = GetActivecontrol(control);
+            IEditableControl activeControl = GetActiveControl(control);
             activeControl?.Paste();
         }
 
         private static void Cut(Control control)
         {
-            IEditableControl activeControl = GetActivecontrol(control);
+            IEditableControl activeControl = GetActiveControl(control);
             activeControl?.Cut();
         }
 
-        private static IEditableControl GetActivecontrol(Control control)
+        private static IEditableControl GetActiveControl(Control control)
         {
             // Initially here there were about 10 lines of code that determined the active control.
             // In the production code, the control object passed as parameter is a container of controls.
